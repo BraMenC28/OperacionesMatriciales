@@ -14,3 +14,12 @@ class OpBasicas:
         for i in self.resultado:
             self.resultado=print(*i)
         return self.resultado
+    def Multiplicar(self, fil_1, colum_1, fil_2, colum_2):
+        if colum_1==fil_2:
+            self.resultado = [[0 for _ in range(colum_2)] for _ in range(fil_1)]#Se crea la matriz para que luego se cambien los valores
+            for i in range(fil_1):
+                for j in range(colum_2):
+                    for k in range(colum_1):
+                        self.resultado[i][j]+=(self.matriz_1[i][k]*self.matriz_2[k][j])#proceso para la multiplicacion de matrices
+        else:
+            print("No coinciden los indices para la operacion de multiplicacion (m x n n x p)")
