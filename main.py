@@ -77,7 +77,31 @@ while(elecion!=6):
             else:
                 print("No coinciden los indices para la operacion de multiplicacion ([m x n] * [n x p])")
         case 3:
-            print("falta")
+            filas_1 = int(input("\nIngrese el numero de filas de la matriz a invertir: "))
+            columnas_1 = int(input("Ingrese el numero de columnas de la matriz a invertir: "))
+
+            # Validación inicial: Si no es cuadrada, ni siquiera pedimos los datos
+            if filas_1 != columnas_1:
+                print("\nOperación cancelada: Solo las matrices cuadradas tienen inversa.")
+            else:
+                matrizes.matriz_1 = [[0 for _ in range(columnas_1)] for _ in range(filas_1)]
+                llamar_matriz(matrizes.matriz_1)
+                for i in range(filas_1):
+                    for j in range(columnas_1):
+                        # Se usa float() en lugar de int() porque la inversa casi siempre genera fracciones/decimales
+                        matrizes.matriz_1[i][j] = float(input(f"Ingrese el valor de la fila [{i+1}] columna [{j+1}] : "))
+
+                print("\nMatriz original ingresada: ")
+                llamar_matriz(matrizes.matriz_1)
+
+                # Ejecutar el cálculo
+                matrizes.Inversa(filas_1, columnas_1)
+
+                # Verificar que la matriz tenga resultado (que no haya sido singular/sin inversa)
+                if len(matrizes.resultado) > 0:
+                    print("\nEl resultado de la matriz inversa es: ")
+                    matrizes.getResultado()
+
         case 4:
             filas_1=int(input("\nIngrese el numero de filas de la matriz numero 1: "))
             columnas_1=int(input("Ingrese el numero de columnas de la matriz numero 1: "))
@@ -88,7 +112,7 @@ while(elecion!=6):
                 for j in range (columnas_1):
                     matrizes.matriz_1[i][j]=int(input(f"Ingrese el valor de la fila [{i+1}]columna [{j+1}] :"))#ingreso de valores en las posiciones indicadas
             #print(matrizes.matriz_1)#matriz con los valores pero sin arreglos visuales
-            print("\nMatriz_1 ingresada: ")
+            
             llamar_matriz(matrizes.matriz_1)#envia la matriz con los valores para que se arregle la parte visual
 
             filas_2=int(input("\nIngrese el numero de filas del vector : "))
