@@ -52,8 +52,8 @@ class OpBasicas:
                         # Intercambiar las filas completas
                         matriz_copia[i], matriz_copia[k] = matriz_copia[k], matriz_copia[i]
                         matriz_identidad[i], matriz_identidad[k] = matriz_identidad[k], matriz_identidad[i]
-                        break
-                else:
+                        break#break rompe el bucle for y hace que se salte el bloque else
+                else:#El else se activa única y exclusivamente si el bucle for logra completar todas sus iteraciones sin ser interrumpido por la instrucción break
                     print("Error: La matriz es singular (su determinante es 0) y no tiene inversa.")
                     return
             # Dividir toda la fila actual por el valor del pivote para que la diagonal sea 1
@@ -68,7 +68,7 @@ class OpBasicas:
                     for j in range(columnas):
                         matriz_copia[fila_actual][j] = matriz_copia[fila_actual][j] - (factor_multiplicador * matriz_copia[i][j])
                         matriz_identidad[fila_actual][j] = matriz_identidad[fila_actual][j] - (factor_multiplicador * matriz_identidad[i][j])
-        # 4. Redondear los resultados para evitar decimales infinitos muy largos en consola
+        # 4. Redondear los resultados para evitar decimales muy largos en consola
         for i in range(filas):
             for j in range(columnas):
                 matriz_identidad[i][j] = round(matriz_identidad[i][j], 3)
